@@ -265,6 +265,7 @@
         </activity>
 
         <activity android:name=".features.spaces.SpacePreviewActivity"/>
+        <activity android:name=".features.spaces.SpaceExploreActivity"/>
         <!-- Services -->
 
         <service
