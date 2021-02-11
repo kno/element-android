@@ -28,11 +28,11 @@ class DefaultSpace(private val room: Room) : Space {
         return room
     }
 
-    override suspend fun addRoom(roomId: String) {
+    override suspend fun addRoom(roomId: String, viaServers: List<String>) {
         asRoom().sendStateEvent(
                 eventType = EventType.STATE_SPACE_CHILD,
                 stateKey = roomId,
-                body = SpaceChildContent(present = true).toContent()
+                body = SpaceChildContent(viaServers).toContent()
         )
     }
 

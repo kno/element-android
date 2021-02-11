@@ -22,7 +22,7 @@ interface Space {
 
     fun asRoom() : Room
 
-    suspend fun addRoom(roomId: String)
+    suspend fun addRoom(roomId: String, viaServers: List<String>)
 
 //    fun getChildren() : List<IRoomSummary>
 }

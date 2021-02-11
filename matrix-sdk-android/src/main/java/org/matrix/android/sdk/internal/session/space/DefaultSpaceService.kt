@@ -120,8 +120,7 @@ internal class DefaultSpaceService @Inject constructor(
                                                 isEncrypted = false
                                         ),
                                         order = childStateEv?.order,
-                                        present = childStateEv?.present ?: false,
-                                        autoJoin = childStateEv?.default ?: false,
+                                        autoJoin = childStateEv?.autoJoin ?: false,
                                         viaServers = childStateEv?.via ?: emptyList()
                                 )
                             } ?: emptyList()

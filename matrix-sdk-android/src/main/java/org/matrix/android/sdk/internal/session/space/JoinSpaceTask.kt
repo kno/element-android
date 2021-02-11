@@ -82,8 +82,8 @@ internal class DefaultJoinSpaceTask @Inject constructor(
         Timber.v("## Space: Found space summary Name:[${summary?.roomSummary?.name}] children: ${summary?.children?.size}")
         summary?.children?.forEach {
             val childRoomSummary = it.roomSummary ?: return@forEach
-            Timber.v("## Space: Processing child :[${childRoomSummary.roomId}] present: ${it.present} autoJoin:${it.autoJoin}")
-            if (it.present && it.autoJoin) {
+            Timber.v("## Space: Processing child :[${childRoomSummary.roomId}] autoJoin:${it.autoJoin}")
+            if (it.autoJoin) {
                 // I should try to join as well
                 if (childRoomSummary.roomType == RoomType.SPACE) {
                 } else {

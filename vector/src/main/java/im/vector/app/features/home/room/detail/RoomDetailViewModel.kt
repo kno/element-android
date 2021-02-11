@@ -781,7 +781,11 @@ class RoomDetailViewModel @AssistedInject constructor(
                                         invitedUserIds.addAll(slashCommandResult.invitees)
                                     }
                                     val spaceId = session.spaceService().createSpace(params)
-                                    session.spaceService().getSpace(spaceId)?.addRoom(state.roomId)
+                                    session.spaceService().getSpace(spaceId)
+                                            ?.addRoom(
+                                                    state.roomId,
+                                                    listOf(session.sessionParams.homeServerHost ?: "")
+                                            )
                                 } catch (failure: Throwable) {
                                     _viewEvents.post(RoomDetailViewEvents.SlashCommandResultError(failure))
                                 }
@@ -792,7 +796,11 @@ class RoomDetailViewModel @AssistedInject constructor(
                         is ParsedCommand.AddToSpace            -> {
                             viewModelScope.launch(Dispatchers.IO) {
                                 try {
-                                    session.spaceService().getSpace(slashCommandResult.spaceId)?.addRoom(room.roomId)
+                                    session.spaceService().getSpace(slashCommandResult.spaceId)
+                                            ?.addRoom(
+                                                    room.roomId,
+                                                    listOf(session.sessionParams.homeServerHost ?: "")
+                                            )
                                 } catch (failure: Throwable) {
                                     _viewEvents.post(RoomDetailViewEvents.SlashCommandResultError(failure))
                                 }
